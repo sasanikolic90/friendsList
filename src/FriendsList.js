@@ -17,8 +17,19 @@ class FriendsList extends Component {
   render () {
     const {friends} = this.props;
     const {showOfflineUsers} = this.state;
-    const filteredFriends = filter(friends, friend => showOfflineUsers === true || friend.isOnline === true);
-    console.log(filteredFriends);
+    {/* const filteredFriends = filter(friends, friend => showOfflineUsers === true || friend.isOnline === true); */}
+
+    const onlineUsers = [];
+    const offlineUsers = [];
+
+    friends.forEach(friend => {
+      if (friend.isOnline) {
+        onlineUsers.push(friend)
+      }
+      else {
+        offlineUsers.push(friend);
+      }
+    });
 
     return (
       <div>
@@ -26,12 +37,21 @@ class FriendsList extends Component {
           <span>{showOfflineUsers ? 'Hide' : 'Show'} offline users</span>
         </button>
 
-        {filteredFriends.map((friend, index) => {
-          return (
+        <div>
+          <h3> Online users </h3>
+          {onlineUsers.map((friend, index) =>
             <Friend key={index} friend={friend} />
-          )
+          )}
+        </div>
+
+        {showOfflineUsers &&
+          <div>
+            <h3> Offline users </h3>
+            {offlineUsers.map((friend, index) =>
+              <Friend key={index} friend={friend} />
+            )}
+          </div>
         }
-      )}
       </div>
     )
   }
