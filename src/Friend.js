@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Friend extends Component {
 
   render() {
-    const {friend} = this.props;
+    const {friend, isFavorite, toggleFavorite} = this.props;
     const {imageUrl, name, surname, isOnline} = friend;
 
       return (
@@ -14,6 +14,9 @@ class Friend extends Component {
               <circle fill={isOnline ? 'green' : 'red'} cx="5" cy="5" r="5"/>
             </svg>
           <b> {name} </b><span>{surname}</span>
+          <button onClick={toggleFavorite}>
+           {isFavorite === true ? 'Remove favorite' : 'Set as favorite'}
+          </button>
         </div>
       )
     }
