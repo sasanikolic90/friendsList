@@ -3,6 +3,7 @@ import friends from 'friends.json';
 import FriendsList from 'FriendsList';
 import 'css/app.css';
 import Dialog from 'Dialog';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class App extends Component {
   state = {
@@ -13,7 +14,7 @@ class App extends Component {
   element;
 
   onWindowScroll = event => {
-    this.setState({scrollPosition: event.srcElement.scrollTop});
+    this.setState({scrollPosition: this.element.scrollTop});
   }
 
   componentDidMount() {
@@ -43,7 +44,13 @@ class App extends Component {
           <hr />
           <button onClick={this.openDialog}> Open dialog</button>
           <FriendsList friends={friends}/>
+
+          <ReactCSSTransitionGroup
+          transitionName="fadein"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
           {dialogOpen && <Dialog closeDialog={this.closeDialog}/>}
+        </ReactCSSTransitionGroup>
         </div>
       </div>
     )
