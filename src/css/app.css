@@ -9,6 +9,10 @@
     min-height: 3000px;
 }
 
+.counter {
+  position: fixed;
+}
+
 .dialog {
     position: absolute;
     top: 50px;

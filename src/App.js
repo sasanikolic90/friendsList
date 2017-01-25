@@ -35,7 +35,7 @@ class App extends Component {
       <div className="app" ref={element => this.element = element}>
         <div className="content">
           Friend List
-          <div>Scroll: {scrollPosition}</div>
+          <div className="counter">Scroll: {scrollPosition}</div>
           <hr />
           <button onClick={this.openDialog}> Open dialog</button>
           <FriendsList friends={friends}/>
