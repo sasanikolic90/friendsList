@@ -20,6 +20,10 @@ class App extends Component {
     this.element.addEventListener("scroll", this.onWindowScroll);
   }
 
+  componentWillUnmount() {
+    this.element.removeEventListener("scroll", this.onWindowScroll);
+  }
+
   openDialog = () => {
     this.setState({dialogOpen: true});
   }
