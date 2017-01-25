@@ -75,7 +75,7 @@ class FriendsList extends Component {
           <div>
             <h3> Online users </h3>
             {onlineFilteredFriends.map((friend, index) =>
-              <Friend key={index}
+              <Friend key={friend.id}
               friend={friend}
               isFavorite={favorites.indexOf(friend.id) !== -1}
               toggleFavorite={() => this.toggleFavorite(friend.id)}
@@ -88,7 +88,7 @@ class FriendsList extends Component {
           <div>
             <h3> Offline users </h3>
             {offlineFilteredFriends.map((friend, index) =>
-              <Friend key={index}
+              <Friend key={friend.id}
               friend={friend}
               isFavorite={favorites.indexOf(friend.id) !== -1}
               toggleFavorite={() => this.toggleFavorite(friend.id)}

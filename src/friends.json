@@ -4,20 +4,20 @@
     "surname": "Oliver",
     "imageUrl": "http://i.imgur.com/zAWzZEN.jpg",
     "isOnline": true,
-    "index": 1
+    "id": 1
   },
   {
     "name" : "Brendan",
     "surname": "Eich",
     "imageUrl": "http://i.imgur.com/H7XJPr2.jpg",
     "isOnline": true,
-    "index": 2
+    "id": 2
   },
   {
     "name" : "Offline",
     "surname": "Friend",
     "imageUrl": "http://i.imgur.com/H7XJPr2.jpg",
     "isOnline": false,
-    "index": 3
+    "id": 3
   }
 ]
