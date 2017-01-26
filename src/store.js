@@ -1,4 +1,7 @@
-import {createStore, combineReducers} from 'redux';
+import {applyMiddleware, createStore, combineReducers} from 'redux';
+import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
+const logger = createLogger();
 
 const increment = amount => ({
   type: 'INCREMENT',
@@ -19,6 +22,19 @@ const removeUser = userId => ({
   type: 'REMOVE_USER',
   userId
 });
+
+const incrementIfOdd = () => (dispatch, getState) => {
+  const {counter} = getState();
+
+  if (counter % 2 === 0) {
+    console.error('NOPE!');
+    return;
+  }
+
+  console.log('its fine!');
+
+  dispatch(increment(1));
+}
 
 const counterReducer = function(state = 0, action) {
   switch (action.type) {
@@ -53,7 +69,12 @@ const reducers = combineReducers({
   users: usersReducer
 });
 
-const store = createStore(reducers);
+const middleWare = applyMiddleware(logger, thunk);
+
+const store = createStore(
+  reducers,
+  middleWare
+);
 
 store.subscribe(() => {
   console.log('Store has changed');
@@ -74,3 +95,5 @@ store.dispatch(addUser({name: 'sasa', id: 1}));
 store.dispatch(addUser({name: 'dan', id: 2}));
 store.dispatch(addUser({name: 'kitze', id: 3}));
 store.dispatch(removeUser(2));
+
+store.dispatch(incrementIfOdd());
