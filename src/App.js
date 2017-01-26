@@ -3,7 +3,7 @@ import friends from 'friends.json';
 import FriendsList from 'FriendsList';
 import 'css/app.css';
 import Dialog from 'Dialog';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class App extends Component {
   state = {
